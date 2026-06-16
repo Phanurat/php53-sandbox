@@ -1,17 +1,17 @@
 version: '3.8'
 
 services:
-  # PHP-FPM v5.3.29 Container
+  # PHP-FPM v5.3 Sandbox (Build เองในเครื่อง)
   php:
-    image: preparedness/php-fpm:5.3
+    build: ./php
     container_name: sandbox-php53
     volumes:
       - ./src:/var/www/html
-    # ปรับค่า php.ini ภายใน Container เพื่อเปิดช่องโหว่ RFI และเปิด fix_pathinfo ล่อเป้าไว้ทดสอบ
-    command: >
-      sh -c "echo 'allow_url_include = On' >> /usr/local/etc/php.ini &&
-             echo 'cgi.fix_pathinfo = 1' >> /usr/local/etc/php.ini &&
-             php-fpm"
+    # เขียนทับไฟล์ php.ini ข้างในระบบ เพื่อเปิดช่องโหว่ RFI และตั้งค่า fix_pathinfo ล่อเป้าไว้
+    entrypoint: >
+      sh -c "echo 'allow_url_include = On' >> /etc/php5/fpm/php.ini &&
+             echo 'cgi.fix_pathinfo = 1' >> /etc/php5/fpm/php.ini &&
+             php5-fpm -F"
     networks:
       - sandbox-net
 
