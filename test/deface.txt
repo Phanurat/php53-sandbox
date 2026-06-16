@@ -1,0 +1,7 @@
+<html>
+<head><title>HACKED</title></head>
+<body style="background:black; color:red; text-align:center; padding-top:150px; font-family:sans-serif;">
+    <h1>[!] YOU HAVE BEEN HACKED [!]</h1>
+    <p style="color:white;">ระบบ PHP 5.3 Sandbox นี้ถูกควบคุมโดยแฮกเกอร์เรียบร้อยแล้ว</p>
+</body>
+</html>
